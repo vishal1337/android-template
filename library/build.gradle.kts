@@ -14,27 +14,27 @@
  * limitations under the License.
  */
 
-pluginManagement {
-    resolutionStrategy {
-        eachPlugin {
-            when (requested.id.namespace) {
-                "com.android" -> {
-                    useModule("com.android.tools.build:gradle:${requested.version}")
-                }
-            }
+import dependencies.Dependencies
+import extensions.addKotlinTestsDependencies
+
+plugins {
+    id(Plugins.JAVA_LIBRARY)
+    id(Plugins.KOTLIN)
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+
+    sourceSets {
+        getByName("main") {
+            java.srcDir("src/main/kotlin")
         }
-    }
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-        jcenter()
     }
 }
 
-rootProject.name = ("AndroidTemplate")
-include(
-    "app",
-    "core",
-    "library"
-)
+dependencies {
+    implementation(Dependencies.KOTLIN)
+
+    addKotlinTestsDependencies()
+}

@@ -67,11 +67,18 @@ fun DependencyHandler.androidTestImplementation(dependencyNotation: String): Dep
     add("androidTestImplementation", dependencyNotation)
 
 /**
- * Adds all the tests dependencies to specific configuration.
+ * Adds all the tests dependencies to android specific configuration.
  */
 fun DependencyHandler.addTestsDependencies() {
     testImplementation(TestDependencies.JUNIT)
 
     androidTestImplementation(TestAndroidDependencies.EXT)
     androidTestImplementation(TestAndroidDependencies.ESPRESSO)
+}
+
+/**
+ * Adds all the tests dependencies to kotlin specific configuration.
+ */
+fun DependencyHandler.addKotlinTestsDependencies() {
+    testImplementation(TestDependencies.JUNIT)
 }
