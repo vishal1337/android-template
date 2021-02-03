@@ -1,3 +1,4 @@
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import extensions.applyDefault
 
 /*
@@ -19,8 +20,20 @@ import extensions.applyDefault
 plugins {
     id(Plugins.ANDROID_APPLICATION) version PluginVersions.AGP apply false
     kotlin(Plugins.KOTLIN_ANDROID) version PluginVersions.KOTLIN apply false
+    id(Plugins.UPDATE_DEPENDENCIES) version PluginVersions.VERSIONS_PLUGIN
 }
 
 allprojects {
     repositories.applyDefault()
 }
+
+tasks.withType<DependencyUpdatesTask> {
+    rejectVersionIf {
+        isNonStable(candidate.version)
+    }
+}
+
+fun isNonStable(version: String): Boolean =
+    listOf("alpha", "beta", "rc", "cr", "m", "preview", "b", "ea")
+        .map { qualifier -> Regex("(?i).*[.-]$qualifier[.\\d-+]*") }
+        .any { it.matches(version) }

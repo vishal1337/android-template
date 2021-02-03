@@ -10,4 +10,6 @@ object Plugins {
 
     const val KOTLIN = "kotlin"
     const val KOTLIN_ANDROID = "android"
+
+    const val UPDATE_DEPENDENCIES = "com.github.ben-manes.versions"
 }
