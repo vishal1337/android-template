@@ -79,6 +79,10 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
+    lintOptions {
+        lintConfig = rootProject.file(".lint/config.xml")
+    }
+
     sourceSets {
         getByName("main") {
             java.srcDir("src/main/kotlin")

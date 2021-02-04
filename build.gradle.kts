@@ -36,11 +36,11 @@ subprojects {
     }
 
     detekt {
-        config = rootProject.files("config/detekt/detekt.yml")
+        config = rootProject.files("$rootDir/.detekt/config.yml")
         reports {
             html {
                 enabled = true
-                destination = file("build/reports/detekt.html")
+                destination = file("build/reports/detekt/report.html")
             }
         }
     }

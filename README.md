@@ -28,8 +28,8 @@ Once created don't forget to update the:
 <!--- CI Setup with GitHub Actions. --->
 - Kotlin Static Analysis via `ktlint` and `detekt`.
 <!--- Publishing Ready. --->
-<!--- Issues Template (bug report + feature request). --->
-<!--- Pull Request Template. --->
+- Issues Template (bug report + feature request).
+- Pull Request Template.
 
 ## Gradle Setup 🐘
 
