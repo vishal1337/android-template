@@ -1,6 +1,6 @@
-## Android Boilerplate
+# Android Boilerplate 🤖
 [![CodeStyle](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
-[![Kotlin Version](https://img.shields.io/badge/kotlin-1.4.21-blue.svg)](http://kotlinlang.org/)
+[![Kotlin Version](https://img.shields.io/badge/kotlin-1.4.30-blue.svg)](http://kotlinlang.org/)
 [![Gradle](https://img.shields.io/badge/gradle-6.8.1-blue.svg)](https://lv.binarybabel.org/catalog/gradle/latest)
 [![API](https://img.shields.io/badge/API-23%2B-blue.svg)](https://android-arsenal.com/api?level=23)
 [![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)](http://www.apache.org/licenses/LICENSE-2.0)
@@ -8,23 +8,6 @@
 A simple Android project template that lets you create an **Android/Kotlin** project and be up and running in a **few seconds**.
 
 This template is focused on delivering a project with **static analysis** and **continuous integration** already in place.
-
-## Table of Contents
-
--   [Todo](https://github.com/vishal1337/android-boilerplate/src/master#todo)
--   [Features](https://github.com/vishal1337/android-boilerplate/src/master#features)
--   [Development](https://github.com/vishal1337/android-boilerplate/src/master#development)
--   [Architecture](https://github.com/vishal1337/android-boilerplate/src/master#architecture)
--   [License](https://github.com/vishal1337/android-boilerplate/src/master#license)
-
-## Todo
-
-- Add Static Analysis tools
-- Add Product Flavours
-- Add CI
-- Add Issues Template (bug report + feature request).
-- Add Pull Request Template.
-- Add Sample Espresso, Instrumentation & JUnit tests.
 
 ## How to use 👣
 
@@ -43,10 +26,22 @@ Once created don't forget to update the:
 - 100% Gradle Kotlin DSL setup.
 - Dependency versions managed via `buildSrc`.
 <!--- CI Setup with GitHub Actions. --->
-<!--- Kotlin Static Analysis via `ktlint` and `detekt`. --->
-- Publishing Ready.
+- Kotlin Static Analysis via `ktlint` and `detekt`.
+<!--- Publishing Ready. --->
 <!--- Issues Template (bug report + feature request). --->
 <!--- Pull Request Template. --->
+
+## Gradle Setup 🐘
+
+This template is using [**Gradle Kotlin DSL**](https://docs.gradle.org/current/userguide/kotlin_dsl.html) as well as the [Plugin DSL](https://docs.gradle.org/current/userguide/plugins.html#sec:plugins_block) to setup the build.
+
+Dependencies are centralized inside the [Dependencies.kt](buildSrc/src/main/kotlin/dependencies/Dependencies.kt) file in the `buildSrc` folder. This provides convenient auto-completion when writing your gradle files.
+
+## Static Analysis 🔍
+
+This template is using [**ktlint**](https://github.com/pinterest/ktlint) with the [ktlint-gradle](https://github.com/jlleitschuh/ktlint-gradle) plugin to format your code. To reformat all the source code as well as the buildscript you can run the `ktlintFormat` gradle task.
+
+This template is also using [**detekt**](https://github.com/detekt/detekt) to analyze the source code, with the configuration that is stored in the [detekt.yml](config/detekt/detekt.yml) file (the file has been generated with the `detektGenerateConfig` task).
 
 ## Development
 
@@ -110,6 +105,16 @@ But the idea is to have different environments target for Development and QA res
 | Release | <p><img src="app/src/main/res/mipmap-xhdpi/ic_launcher.png"><br>AndroidTemplateDEV</p>  | <p><img src="app/src/main/res/mipmap-xhdpi/ic_launcher.png"><br>AndroidTemplateQA</p>  | <p><img src="app/src/main/res/mipmap-xhdpi/ic_launcher.png"><br>AndroidTemplate</p>  |
 
 --->
+
+## Todo
+
+- Add Static Analysis tools
+- Add Product Flavours
+- Add CI
+- Add Issues Template (bug report + feature request).
+- Add Pull Request Template.
+- Add Sample Espresso, Instrumentation & JUnit tests.
+
 ### Best practices
 
 Avoid reinventing the wheel by following these guidelines:

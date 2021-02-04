@@ -5,7 +5,8 @@ object DependencyVersions {
     const val APPCOMPAT = "1.2.0"
     const val CONSTRAINT_LAYOUT = "2.0.4"
     const val CORE_KTX = "1.3.2"
-    const val KOTLIN = "1.4.21"
+    const val KOTLIN = "1.4.30"
+    const val KTLINT = "0.40.0"
     const val MATERIAL = "1.2.1"
 
     // Tests
