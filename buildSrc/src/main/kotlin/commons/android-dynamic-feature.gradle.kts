@@ -14,57 +14,53 @@
  * limitations under the License.
  */
 
+package commons
+
+import AndroidConfig
+import BuildModules
+import BuildProductDimensions
+import BuildType
+import BuildTypeDebug
+import BuildTypeRelease
+import ProductFlavorDevelop
+import ProductFlavorProduction
+import ProductFlavorQA
 import dependencies.Dependencies
 import extensions.addTestsDependencies
-import extensions.getLocalProperty
 import extensions.implementation
 
 plugins {
-    id(Plugins.ANDROID_APPLICATION)
-    kotlin(Plugins.KOTLIN_ANDROID)
+    id("com.android.dynamic-feature")
+    kotlin("android")
 }
 
 android {
     compileSdkVersion(AndroidConfig.COMPILE_SDK_VERSION)
 
     defaultConfig {
-        applicationId = AndroidConfig.APPLICATION_ID
         minSdkVersion(AndroidConfig.MIN_SDK_VERSION)
         targetSdkVersion(AndroidConfig.TARGET_SDK_VERSION)
 
         versionCode = AndroidConfig.VERSION_CODE
         versionName = AndroidConfig.VERSION_NAME
 
-        vectorDrawables.useSupportLibrary = AndroidConfig.SUPPORT_LIBRARY_VECTOR_DRAWABLES
         testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
+        consumerProguardFile("consumer-rules.pro")
     }
 
-    buildFeatures {
+    buildFeatures.apply {
+        dataBinding.isEnabled = AndroidConfig.DATA_BINDING_ENABLED
         viewBinding = AndroidConfig.VIEW_BINDING_ENABLED
-        dataBinding = AndroidConfig.DATA_BINDING_ENABLED
-    }
-
-    signingConfigs {
-        create(BuildType.RELEASE) {
-            keyAlias = getLocalProperty("signing.key.alias")
-            keyPassword = getLocalProperty("signing.key.password")
-            storeFile = file(getLocalProperty("signing.store.file"))
-            storePassword = getLocalProperty("signing.store.password")
-        }
     }
 
     buildTypes {
         getByName(BuildType.RELEASE) {
             proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
-            signingConfig = signingConfigs.getByName(name)
 
             isMinifyEnabled = BuildTypeRelease.isMinifyEnabled
             isTestCoverageEnabled = BuildTypeRelease.isTestCoverageEnabled
         }
-
         getByName(BuildType.DEBUG) {
-            applicationIdSuffix = BuildTypeDebug.applicationIdSuffix
-            versionNameSuffix = BuildTypeDebug.versionNameSuffix
             isMinifyEnabled = BuildTypeDebug.isMinifyEnabled
             isTestCoverageEnabled = BuildTypeDebug.isTestCoverageEnabled
         }
@@ -72,9 +68,9 @@ android {
 
     flavorDimensions(BuildProductDimensions.ENVIRONMENT)
     productFlavors {
-        ProductFlavorDevelop.appCreate(this)
-        ProductFlavorQA.appCreate(this)
-        ProductFlavorProduction.appCreate(this)
+        ProductFlavorDevelop.libraryCreate(this)
+        ProductFlavorQA.libraryCreate(this)
+        ProductFlavorProduction.libraryCreate(this)
     }
 
     compileOptions {
@@ -84,10 +80,6 @@ android {
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
-    }
-
-    lintOptions {
-        lintConfig = rootProject.file(".lint/config.xml")
     }
 
     sourceSets {
@@ -101,15 +93,23 @@ android {
             java.srcDir("src/androidTest/kotlin")
         }
     }
+
+    lintOptions {
+        lintConfig = rootProject.file(".lint/config.xml")
+        isCheckAllWarnings = true
+        isWarningsAsErrors = true
+    }
+
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 dependencies {
+    implementation(project(BuildModules.APP))
 
-    implementation(Dependencies.APPCOMPAT)
-    implementation(Dependencies.CONSTRAINT_LAYOUT)
-    implementation(Dependencies.CORE_KTX)
     implementation(Dependencies.KOTLIN)
-    implementation(Dependencies.MATERIAL)
 
     addTestsDependencies()
 }

@@ -14,27 +14,6 @@
  * limitations under the License.
  */
 
-import dependencies.Dependencies
-import extensions.addKotlinTestsDependencies
-
 plugins {
-    id(Plugins.JAVA_LIBRARY)
-    id(Plugins.KOTLIN)
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-
-    sourceSets {
-        getByName("main") {
-            java.srcDir("src/main/kotlin")
-        }
-    }
-}
-
-dependencies {
-    implementation(Dependencies.KOTLIN)
-
-    addKotlinTestsDependencies()
+    id(Plugins.COMMON_KOTLIN_LIBRARY)
 }

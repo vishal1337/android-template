@@ -1,7 +1,7 @@
 # Android Boilerplate 🤖
 [![CodeStyle](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 [![Kotlin Version](https://img.shields.io/badge/kotlin-1.4.30-blue.svg)](http://kotlinlang.org/)
-[![Gradle](https://img.shields.io/badge/gradle-6.8.1-blue.svg)](https://lv.binarybabel.org/catalog/gradle/latest)
+[![Gradle](https://img.shields.io/badge/gradle-6.8.2-blue.svg)](https://lv.binarybabel.org/catalog/gradle/latest)
 [![API](https://img.shields.io/badge/API-23%2B-blue.svg)](https://android-arsenal.com/api?level=23)
 [![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
@@ -108,8 +108,10 @@ But the idea is to have different environments target for Development and QA res
 
 ## Todo
 
-- Add Static Analysis tools
-- Add Product Flavours
+- Add Git-Hooks
+- Add Spotless for copyright
+- Add Code Coverage
+- Add Default Libraries
 - Add CI
 - Add Issues Template (bug report + feature request).
 - Add Pull Request Template.

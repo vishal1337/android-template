@@ -14,65 +14,6 @@
  * limitations under the License.
  */
 
-import dependencies.Dependencies
-import extensions.addTestsDependencies
-
 plugins {
-    id(Plugins.ANDROID_LIBRARY)
-    kotlin(Plugins.KOTLIN_ANDROID)
-}
-
-android {
-    compileSdkVersion(AndroidConfig.COMPILE_SDK_VERSION)
-
-    defaultConfig {
-        minSdkVersion(AndroidConfig.MIN_SDK_VERSION)
-        targetSdkVersion(AndroidConfig.TARGET_SDK_VERSION)
-
-        versionCode = AndroidConfig.VERSION_CODE
-        versionName = AndroidConfig.VERSION_NAME
-
-        testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
-        consumerProguardFile("consumer-rules.pro")
-    }
-
-    buildTypes {
-        getByName(BuildType.RELEASE) {
-            proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
-
-            isMinifyEnabled = BuildTypeRelease.isMinifyEnabled
-            isTestCoverageEnabled = BuildTypeRelease.isTestCoverageEnabled
-        }
-        getByName(BuildType.DEBUG) {
-            isMinifyEnabled = BuildTypeDebug.isMinifyEnabled
-            isTestCoverageEnabled = BuildTypeDebug.isTestCoverageEnabled
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
-    }
-
-    sourceSets {
-        getByName("main") {
-            java.srcDir("src/main/kotlin")
-        }
-        getByName("test") {
-            java.srcDir("src/test/kotlin")
-        }
-        getByName("androidTest") {
-            java.srcDir("src/androidTest/kotlin")
-        }
-    }
-}
-
-dependencies {
-    implementation(Dependencies.KOTLIN)
-
-    addTestsDependencies()
+    id(Plugins.COMMON_ANDROID_LIBRARY)
 }

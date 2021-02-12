@@ -18,8 +18,6 @@ import extensions.applyDefault
  */
 
 plugins {
-    id(Plugins.ANDROID_APPLICATION) version PluginVersions.AGP apply false
-    kotlin(Plugins.KOTLIN_ANDROID) version PluginVersions.KOTLIN apply false
     id(Plugins.DETEKT) version PluginVersions.DETEKT
     id(Plugins.KTLINT) version PluginVersions.KTLINT
     id(Plugins.UPDATE_DEPENDENCIES) version PluginVersions.VERSIONS_PLUGIN

@@ -14,27 +14,30 @@
  * limitations under the License.
  */
 
+package commons
+
+import dependencies.Dependencies
+import extensions.addKotlinTestsDependencies
+import extensions.implementation
+
 plugins {
-    `kotlin-dsl`
+    id("kotlin")
 }
 
-kotlinDslPluginOptions {
-    experimentalWarning.set(false)
-}
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 
-repositories {
-    google()
-    gradlePluginPortal()
-    jcenter()
-    mavenCentral()
-}
-
-object PluginVersions {
-    const val AGP = "4.1.2"
-    const val KOTLIN = "1.4.30"
+    sourceSets {
+        getByName("main") {
+            java.srcDir("src/main/kotlin")
+        }
+    }
 }
 
 dependencies {
-    implementation("com.android.tools.build:gradle:${PluginVersions.AGP}")
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:${PluginVersions.KOTLIN}")
+    implementation(Dependencies.KOTLIN)
+
+    addKotlinTestsDependencies()
 }
+
