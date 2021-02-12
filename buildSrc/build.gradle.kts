@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Vishal Choudhary
+ * Copyright 2021 Vishal Choudhary
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,9 +32,11 @@ repositories {
 object PluginVersions {
     const val AGP = "4.1.2"
     const val KOTLIN = "1.4.30"
+    const val SPOTLESS = "3.26.1"
 }
 
 dependencies {
     implementation("com.android.tools.build:gradle:${PluginVersions.AGP}")
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:${PluginVersions.KOTLIN}")
+    implementation("com.diffplug.spotless:spotless-plugin-gradle:${PluginVersions.SPOTLESS}")
 }

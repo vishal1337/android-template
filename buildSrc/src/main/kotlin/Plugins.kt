@@ -12,10 +12,13 @@ object Plugins {
 
     const val DETEKT = "io.gitlab.arturbosch.detekt"
 
+    const val GIT_HOOKS = "plugins.git-hooks"
+
     const val KOTLIN = "kotlin"
     const val KOTLIN_ANDROID = "android"
     const val KOTLIN_APT = "apt"
 
     const val KTLINT = "org.jlleitschuh.gradle.ktlint"
+    const val SPOTLESS = "plugins.spotless"
     const val UPDATE_DEPENDENCIES = "com.github.ben-manes.versions"
 }

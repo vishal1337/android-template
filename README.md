@@ -41,7 +41,18 @@ Dependencies are centralized inside the [Dependencies.kt](buildSrc/src/main/kotl
 
 This template is using [**ktlint**](https://github.com/pinterest/ktlint) with the [ktlint-gradle](https://github.com/jlleitschuh/ktlint-gradle) plugin to format your code. To reformat all the source code as well as the buildscript you can run the `ktlintFormat` gradle task.
 
-This template is also using [**detekt**](https://github.com/detekt/detekt) to analyze the source code, with the configuration that is stored in the [detekt.yml](config/detekt/detekt.yml) file (the file has been generated with the `detektGenerateConfig` task).
+This template is using [**detekt**](https://github.com/detekt/detekt) to analyze the source code, with the configuration that is stored in the [detekt.yml](config/detekt/detekt.yml) file (the file has been generated with the `detektGenerateConfig` task).
+
+This template is also using `spotless` to reformat the code, and apply `copyright` header to all the files in the project.
+
+## Git Hooks
+
+Git hooks allow running a pre commit script to make sure the code complies with coding style before making a commit.
+Use `git hooks` gradle tasks to `install` or `delete` git hooks.
+
+Use `scripts/process-code.sh` to fix code.
+
+Use `scripts/git-hooks/pre-commit.sh` to check if the code is ready to commit and it complies with the Code style.
 
 ## Development
 

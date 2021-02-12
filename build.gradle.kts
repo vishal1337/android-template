@@ -1,8 +1,5 @@
-import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import extensions.applyDefault
-
 /*
- * Copyright 2020 Vishal Choudhary
+ * Copyright 2021 Vishal Choudhary
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,14 +14,21 @@ import extensions.applyDefault
  * limitations under the License.
  */
 
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import extensions.applyDefault
+
 plugins {
     id(Plugins.DETEKT) version PluginVersions.DETEKT
+    id(Plugins.GIT_HOOKS)
     id(Plugins.KTLINT) version PluginVersions.KTLINT
     id(Plugins.UPDATE_DEPENDENCIES) version PluginVersions.VERSIONS_PLUGIN
 }
 
 allprojects {
     repositories.applyDefault()
+    apply {
+        plugin(Plugins.SPOTLESS)
+    }
 }
 
 subprojects {
