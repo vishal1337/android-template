@@ -27,13 +27,9 @@ plugins {
 
 allprojects {
     repositories.applyDefault()
+
     apply {
         plugin(Plugins.SPOTLESS)
-    }
-}
-
-subprojects {
-    apply {
         plugin(Plugins.DETEKT)
         plugin(Plugins.DOKKA)
         plugin(Plugins.KTLINT)
