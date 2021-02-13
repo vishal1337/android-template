@@ -19,6 +19,7 @@ import extensions.applyDefault
 
 plugins {
     id(Plugins.DETEKT) version PluginVersions.DETEKT
+    id(Plugins.DOKKA) version PluginVersions.DOKKA
     id(Plugins.GIT_HOOKS)
     id(Plugins.KTLINT) version PluginVersions.KTLINT
     id(Plugins.UPDATE_DEPENDENCIES) version PluginVersions.VERSIONS_PLUGIN
@@ -34,6 +35,7 @@ allprojects {
 subprojects {
     apply {
         plugin(Plugins.DETEKT)
+        plugin(Plugins.DOKKA)
         plugin(Plugins.KTLINT)
     }
 

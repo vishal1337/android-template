@@ -41,9 +41,11 @@ Dependencies are centralized inside the [Dependencies.kt](buildSrc/src/main/kotl
 
 This template is using [**ktlint**](https://github.com/pinterest/ktlint) with the [ktlint-gradle](https://github.com/jlleitschuh/ktlint-gradle) plugin to format your code. To reformat all the source code as well as the buildscript you can run the `ktlintFormat` gradle task.
 
-This template is using [**detekt**](https://github.com/detekt/detekt) to analyze the source code, with the configuration that is stored in the [detekt.yml](config/detekt/detekt.yml) file (the file has been generated with the `detektGenerateConfig` task).
+This template is using [**detekt**](https://github.com/detekt/detekt) to analyze the source code, with the configuration that is stored in the [config.yml](.detekt/config.yml) file (the file has been generated with the `detektGenerateConfig` task).
 
-This template is also using `spotless` to reformat the code, and apply `copyright` header to all the files in the project.
+This template is using [**spotless**](https://github.com/diffplug/spotless) to reformat the code, and apply [copyright.kt](.spotless/copyright.kt) header to all the files in the project.
+
+This template is using [**dokka**](https://github.com/Kotlin/dokka) to generate Documentation for the codebase. Use gradle tasks in `documentation` to generate documentation in required format.
 
 ## Git Hooks
 

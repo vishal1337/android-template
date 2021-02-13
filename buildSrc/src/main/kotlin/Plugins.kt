@@ -12,6 +12,8 @@ object Plugins {
 
     const val DETEKT = "io.gitlab.arturbosch.detekt"
 
+    const val DOKKA = "org.jetbrains.dokka"
+
     const val GIT_HOOKS = "plugins.git-hooks"
 
     const val KOTLIN = "kotlin"
