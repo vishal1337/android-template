@@ -1,43 +1,75 @@
-# Android Boilerplate 🤖
+# Android Template
 [![CodeStyle](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
+![Build](https://github.com/vishal1337/android-template/workflows/Build/badge.svg)
 [![Kotlin Version](https://img.shields.io/badge/kotlin-1.4.30-blue.svg)](http://kotlinlang.org/)
 [![Gradle](https://img.shields.io/badge/gradle-6.8.2-blue.svg)](https://lv.binarybabel.org/catalog/gradle/latest)
 [![API](https://img.shields.io/badge/API-23%2B-blue.svg)](https://android-arsenal.com/api?level=23)
 [![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
-A simple Android project template that lets you create an **Android/Kotlin** project and be up and running in a **few seconds**.
+An Android project template written completely in **kotlin** to help you kick start your next Android project in seconds.
 
-This template is focused on delivering a project with **static analysis** and **continuous integration** already in place.
+This template has **Static Analysis** and **Continuous Integration** already set up.
 
-## How to use 👣
+## Table of Contents
 
-Just click on [![Use this template](https://img.shields.io/badge/-Use%20this%20template-brightgreen)](https://github.com/vishal1337/android-boilerplate/generate) button to create a new repo starting from this template.
+  - [How to use](#how-to-use)
+  - [Features](#features)
+  - [Gradle Setup](#gradle-Setup)
+  - [Git Hooks](#git-hooks)
+  - [Static Analysis](#static-analysis)
+  - [CI](#ci)
+  - [Documentation](#documentation)
+  - [Architecture](#architecture)
+  - [Contributions](#contributions)
+  - [License](#license)
+
+
+## How to use
+
+Just click on the [![Use this template](https://img.shields.io/badge/-Use%20this%20template-brightgreen)](https://github.com/vishal1337/android-template/generate) button to create a new repo starting from this template.
 
 Once created don't forget to update the:
-- [App ID](buildSrc/src/main/kotlin/AndroidConfig.kt)
-- AndroidManifest ([here](app/src/main/AndroidManifest.xml) and [here](core/src/main/AndroidManifest.xml))
-- Package of the source files
+- [Android Configuration](buildSrc/src/main/kotlin/AndroidConfig.kt) for App ID and other required Information.
+- App ID in [`app/src/main/AndroidManifest.xml`](app/src/main/AndroidManifest.xml) and [`core/src/main/AndroidManifest.xml`](core/src/main/AndroidManifest.xml).
+- Package of the source files.
+- [Copyright](.spotless/copyright.kt).
+- Run `./gradlew spotlessApply` to update the copyright across the project.
+- Run `./gradlew installGitHooks` task to install Git Hooks.
 
-## Features 🎨
+## Features
 
 - **100% Kotlin-only template**.
-- 3 Sample modules (Android app, Android library, Kotlin library).
-<!--- Sample Espresso, Instrumentation & JUnit tests. --->
-- 100% Gradle Kotlin DSL setup.
-- Dependency versions managed via `buildSrc`.
-<!--- CI Setup with GitHub Actions. --->
-- Kotlin Static Analysis via `ktlint` and `detekt`.
-<!--- Publishing Ready. --->
+- **100% Gradle Kotlin DSL setup**.
+- Dependencies managed via [`buildSrc`](buildSrc).
+- Common gradle scripts for [`android-library`](buildSrc/src/main/kotlin/commons/android-library.gradle.kts), [`kotlin-library`](buildSrc/src/main/kotlin/commons/kotlin-library.gradle.kts) & [`android-dynamic-feature`](buildSrc/src/main/kotlin/commons/android-dynamic-feature.gradle.kts).
+- 3 Sample modules ([`Android app`](app), [`Android library`](core), [`Kotlin library`](library)).
+- Product flavours. `dev`, `qa`, `prod`.
+- Kotlin Static Analysis via `ktlint`, `spotless` & `detekt`.
+- Git Hooks to make sure you commit the code that passes all the Static Analysis tests.
+- CI setup with GitHub Actions.
 - Issues Template (bug report + feature request).
 - Pull Request Template.
+<!--- MVVM Sample included. --->
+<!--- Sample ViewModel Usage. --->
+<!--- Sample Network API Calls, Room DB Usage. --->
+<!--- Sample Espresso, Instrumentation & JUnit tests. --->
+<!--- Publishing Ready. --->
 
-## Gradle Setup 🐘
+## Gradle Setup
 
 This template is using [**Gradle Kotlin DSL**](https://docs.gradle.org/current/userguide/kotlin_dsl.html) as well as the [Plugin DSL](https://docs.gradle.org/current/userguide/plugins.html#sec:plugins_block) to setup the build.
 
-Dependencies are centralized inside the [Dependencies.kt](buildSrc/src/main/kotlin/dependencies/Dependencies.kt) file in the `buildSrc` folder. This provides convenient auto-completion when writing your gradle files.
+[Android Config](buildSrc/src/main/kotlin/AndroidConfig.kt) contains Android specific configurations.
 
-## Static Analysis 🔍
+Dependencies are centralized inside the [Dependencies.kt](buildSrc/src/main/kotlin/dependencies/Dependencies.kt) file in the [`buildSrc`](buildSrc) folder. This provides convenient auto-completion when writing your gradle files.
+
+Common gradle scripts are placed inside the [commons](buildSrc/src/main/kotlin/commons) package to help reduce boilerplate code when creating a new module. Refer to [`core/build.gradle.kts`](core/build.gradle.kts) or [`library/build.gradle.kts`](library/build.gradle.kts) file for usage examples.
+
+## Git Hooks
+
+Git Hooks allow running a pre commit script to make sure the code complies with the coding style before making a commit. Run `./gradlew installGitHooks` task to install Git Hooks.
+
+## Static Analysis
 
 This template is using [**ktlint**](https://github.com/pinterest/ktlint) with the [ktlint-gradle](https://github.com/jlleitschuh/ktlint-gradle) plugin to format your code. To reformat all the source code as well as the buildscript you can run the `ktlintFormat` gradle task.
 
@@ -45,36 +77,39 @@ This template is using [**detekt**](https://github.com/detekt/detekt) to analyze
 
 This template is using [**spotless**](https://github.com/diffplug/spotless) to reformat the code, and apply [copyright.kt](.spotless/copyright.kt) header to all the files in the project.
 
-This template is using [**dokka**](https://github.com/Kotlin/dokka) to generate Documentation for the codebase. Use gradle tasks in `documentation` to generate documentation in required format.
+Run `scripts/process-code.sh` to fix the code style and update the copyright.
 
-## Git Hooks
+## CI
 
-Git hooks allow running a pre commit script to make sure the code complies with coding style before making a commit.
-Use `git hooks` gradle tasks to `install` or `delete` git hooks.
+This template is using [Github Actions](https://github.com/vishal1337/android-template/actions) for CI.
 
-Use `scripts/process-code.sh` to fix code.
+These are the workflows currently available.
 
-Use `scripts/git-hooks/pre-commit.sh` to check if the code is ready to commit and it complies with the Code style.
+- [Build](.github/workflows/build.yaml) - Will run the `build` task whenever there is a new push to any branch other than the master.
+- [Deploy App](.github/workflows/deploy-app.yaml) - For every pull request merged to the master branch, it will run the `build` & `bundleRelease` tasks followed by signing the bundle and publishing it to the Play store.
 
-## Development
+Github Actions are integrated with Slack, you get the updates on Slack.
 
-### Environment setup
+Add the following **SECRETS** to the repository
 
-First off, you require the latest Android Studio 4.1.2 (or newer) to be able to build the app.
+- `SLACK_WEBHOOK_URL`
+- `SIGNING_KEY`
+- `KEY_STORE_PASSWORD`
+- `ALIAS`
+- `KEY_PASSWORD`
 
-Secondly, to sign your app for release you should generate an upload key and keystore following the [official documentation](https://developer.android.com/studio/publish/app-signing#sign-apk). Append the information used to generate it into `local.properties` project root file following the structure:
-
-```properties
-#Signing Config
-signing.key.alias = <insert>
-signing.key.password = <insert>
-signing.store.file = <insert>
-signing.store.password = <insert>
+Run the following command to generate Signing key string
 ```
+openssl base64 < some_signing_key.jks | tr -d '\n' | tee some_signing_key.jks.base64.txt
+```
+
+## Documentation
+
+This template is using [**dokka**](https://github.com/Kotlin/dokka) to generate Documentation for the codebase. Use gradle tasks in `documentation` to generate documentation in required format.
 
 ## Architecture
 
-The architecture of the application is based, apply and strictly complies with each of the following 5 points:
+The architecture of the template is based, apply and strictly complies with each of the following 5 points:
 
 -   A single-activity architecture, using the [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started) to manage fragment operations.
 -   [Android architecture components](https://developer.android.com/topic/libraries/architecture/), part of Android Jetpack for give to project a robust design, testable and maintainable.
@@ -86,49 +121,18 @@ The architecture of the application is based, apply and strictly complies with e
 
 Modules are collection of source files and build settings that allow you to divide a project into discrete units of functionality. In this case apart from dividing by functionality/responsibility, existing the following dependence between them:
 
-<!---
-TODO Update module dependencies here
--   `:app` depends on `:core` and indirectly depends on `:features` by dynamic-features.
--   `:features` modules depends on `:commons`, `:core`, `:libraries` and `:app`.
--   `:core` and `:commons` only depends for possible utils on `:libraries`.
--   `:libraries` don’t have any dependency.
---->
+-   `:app` depends on `:core`.
+-   `:core` and `:library` don’t have any dependency.
 
-#### App module
-
-The `:app` module is a [com.android.application](https://developer.android.com/studio/build/) module, which is needed to create the app bundle.  It is also responsible for initiating the [dependency graph](https://dagger.dev/hilt) and another project global libraries, differentiating especially between different app environments.
-
-#### Core module
-
-The `:core` module is a [com.android.library](https://developer.android.com/studio/projects/android-library) module for serving the core features of the app like network requests or accessing to the database etc.
-
-#### Library module
-
-The `:library` module is a [com.android.library](https://developer.android.com/studio/projects/android-library) module, which basically contains different utilities that can be used by the different modules.
-
-<!---
 ### Build variants
 
-The application has different product flavours: `Dev`, `QA`, `Prod`. Each variant has a specific target environment and to make easier to distinguish them the app uses a specific icon colour for `debug` and `release` build variant with descriptive app name. In this case and given that it's a sample, all variants have the same Marvel API endpoint.
-But the idea is to have different environments target for Development and QA respectively, what doesn't affect the production environment. This is applicable to any tool, platform, service what is being used. For more information about build variant, check this [link](https://developer.android.com/studio/build/build-variants).
+The template has different product flavours: `Dev`, `QA`, `Prod`. Each variant has a specific target environment. Different flavours use different assets for `debug` and `release` build variant with descriptive app names.
+For more information about build variant, check this [link](https://developer.android.com/studio/build/build-variants).
 
 | Types   | DEV                                                                             | QA                                                                             | PROD                                                                         |
 |---------|:-------------------------------------------------------------------------------:|:------------------------------------------------------------------------------:|:----------------------------------------------------------------------------:|
 | Debug   | <p><img src="app/src/debug/res/mipmap-xhdpi/ic_launcher.png"><br>AndroidTemplateDEV</p> | <p><img src="app/src/debug/res/mipmap-xhdpi/ic_launcher.png"><br>AndroidTemplateQA</p> | <p><img src="app/src/debug/res/mipmap-xhdpi/ic_launcher.png"><br>AndroidTemplate</p> |
 | Release | <p><img src="app/src/main/res/mipmap-xhdpi/ic_launcher.png"><br>AndroidTemplateDEV</p>  | <p><img src="app/src/main/res/mipmap-xhdpi/ic_launcher.png"><br>AndroidTemplateQA</p>  | <p><img src="app/src/main/res/mipmap-xhdpi/ic_launcher.png"><br>AndroidTemplate</p>  |
-
---->
-
-## Todo
-
-- Add Git-Hooks
-- Add Spotless for copyright
-- Add Code Coverage
-- Add Default Libraries
-- Add CI
-- Add Issues Template (bug report + feature request).
-- Add Pull Request Template.
-- Add Sample Espresso, Instrumentation & JUnit tests.
 
 ### Best practices
 
