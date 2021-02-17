@@ -1,0 +1,64 @@
+name: Deploy App
+
+on:
+
+  pull_request:
+    branches:
+      - 'master'
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Run Tests
+        id: test
+        run: ./gradlew test
+
+      - name: Build with Gradle
+        id: build
+        run: ./gradlew build
+
+      - name: Build Release AAB
+        id: buildRelease
+        run: ./gradlew bundleRelease
+
+      - name: Sign AAB
+        id: sign
+        uses: r0adkll/sign-android-release@v1
+        with:
+          releaseDirectory: app/build/outputs/bundle/prodRelease
+          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+          alias: ${{ secrets.ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
+
+      #      - name: Create service_account.json
+      #        id: createServiceAccount
+      #        run: echo '${{ secrets.SERVICE_ACCOUNT_JSON }}' > service_account.json
+      #
+      #      - name: Deploy to Play Store (BETA)
+      #        id: deploy
+      #        uses: r0adkll/upload-google-play@v1
+      #        with:
+      #          serviceAccountJson: service_account.json
+      #          packageName: com.package
+      #          releaseFile: app/build/outputs/bundle/prodRelease/app-prod-release.aab
+      #          track: beta
+      #          whatsNewDirectory: whatsnew/
+
+      - name: Notify on Slack
+        uses: act10ns/slack@v1
+        with:
+          status: ${{ job.status }}
+          steps: ${{ toJson(steps) }}
+        if: always()

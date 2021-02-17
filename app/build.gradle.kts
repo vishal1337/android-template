@@ -16,7 +16,6 @@
 
 import dependencies.Dependencies
 import extensions.addTestsDependencies
-import extensions.getLocalProperty
 import extensions.implementation
 
 plugins {
@@ -44,19 +43,9 @@ android {
         dataBinding = AndroidConfig.DATA_BINDING_ENABLED
     }
 
-    signingConfigs {
-        create(BuildType.RELEASE) {
-            keyAlias = getLocalProperty("signing.key.alias")
-            keyPassword = getLocalProperty("signing.key.password")
-            storeFile = file(getLocalProperty("signing.store.file"))
-            storePassword = getLocalProperty("signing.store.password")
-        }
-    }
-
     buildTypes {
         getByName(BuildType.RELEASE) {
             proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
-            signingConfig = signingConfigs.getByName(name)
 
             isMinifyEnabled = BuildTypeRelease.isMinifyEnabled
             isTestCoverageEnabled = BuildTypeRelease.isTestCoverageEnabled
