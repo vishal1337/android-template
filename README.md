@@ -6,7 +6,7 @@
 [![API](https://img.shields.io/badge/API-23%2B-blue.svg)](https://android-arsenal.com/api?level=23)
 [![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
-An Android project template written completely in **kotlin** to help you kick start your next Android project in seconds.
+An Android project template, written completely in **Kotlin**, to help you kick start your next Android project in seconds.
 
 This template has **Static Analysis** and **Continuous Integration** already set up.
 
