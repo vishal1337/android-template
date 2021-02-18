@@ -17,6 +17,8 @@ This template has **Static Analysis** and **Continuous Integration** already set
   - [Gradle Setup](#gradle-Setup)
   - [Git Hooks](#git-hooks)
   - [Static Analysis](#static-analysis)
+  - [Code Formatting](#code-formatting)
+  - [Dependency Updates](#dependency-updates)
   - [CI](#ci)
   - [Documentation](#documentation)
   - [Architecture](#architecture)
@@ -44,7 +46,9 @@ Once created don't forget to update the:
 - Common gradle scripts for [`android-library`](buildSrc/src/main/kotlin/commons/android-library.gradle.kts), [`kotlin-library`](buildSrc/src/main/kotlin/commons/kotlin-library.gradle.kts) & [`android-dynamic-feature`](buildSrc/src/main/kotlin/commons/android-dynamic-feature.gradle.kts).
 - 3 Sample modules ([`Android app`](app), [`Android library`](core), [`Kotlin library`](library)).
 - Product flavours. `dev`, `qa`, `prod`.
-- Kotlin Static Analysis via `ktlint`, `spotless` & `detekt`.
+- Kotlin Static Analysis using [`ktlint`](https://github.com/pinterest/ktlint) & [`detekt`](https://github.com/detekt/detekt).
+- Code formatting using [`spotless`](https://github.com/diffplug/spotless).
+- Dependency updates management using [`gradle-versions`](https://github.com/ben-manes/gradle-versions-plugin).
 - Git Hooks to make sure you commit the code that passes all the Static Analysis tests.
 - CI setup with GitHub Actions.
 - Issues Template (bug report + feature request).
@@ -75,9 +79,21 @@ This template is using [**ktlint**](https://github.com/pinterest/ktlint) with th
 
 This template is using [**detekt**](https://github.com/detekt/detekt) to analyze the source code, with the configuration that is stored in the [config.yml](.detekt/config.yml) file (the file has been generated with the `detektGenerateConfig` task).
 
-This template is using [**spotless**](https://github.com/diffplug/spotless) to reformat the code, and apply [copyright.kt](.spotless/copyright.kt) header to all the files in the project.
-
 Run `scripts/process-code.sh` to fix the code style and update the copyright.
+
+## Code Formatting
+
+This template is using [**spotless**](https://github.com/diffplug/spotless) to format the code, and apply [copyright.kt](.spotless/copyright.kt) header to all the files in the project.
+
+Run `./gradlew spotlessCheck` to check if the copyright is up to date.
+
+Run `./gradlew spotlessApply` to update the copyright across the project.
+
+## Dependency Updates
+
+This template is using [**gradle-versions**](https://github.com/ben-manes/gradle-versions-plugin) to generate dependency updates report.
+
+Run `./gradlew dependencyUpdates` to generate dependency updates report.
 
 ## CI
 
