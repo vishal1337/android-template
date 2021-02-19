@@ -77,9 +77,15 @@ Git Hooks allow running a pre commit script to make sure the code complies with 
 
 This template is using [**ktlint**](https://github.com/pinterest/ktlint) with the [ktlint-gradle](https://github.com/jlleitschuh/ktlint-gradle) plugin to format your code. To reformat all the source code as well as the buildscript you can run the `ktlintFormat` gradle task.
 
+Run `./gradlew ktlintCheck` to check if the there are any lint issues.
+
+Run `./gradlew ktlintFormat` to format the code across the project.
+
 This template is using [**detekt**](https://github.com/detekt/detekt) to analyze the source code, with the configuration that is stored in the [config.yml](.detekt/config.yml) file (the file has been generated with the `detektGenerateConfig` task).
 
-Run `scripts/process-code.sh` to fix the code style and update the copyright.
+Run `./gradlew detekt` to analyze the code.
+
+Alternatively, you can Run `scripts/process-code.sh` to fix the code style and update the copyright all at once.
 
 ## Code Formatting
 
