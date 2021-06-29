@@ -14,17 +14,22 @@
  * limitations under the License.
  */
 
-package com.v15h4l.template
+package com.v15h4l.template.ui.addedituser
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.v15h4l.template.model.User
 
 /**
- * Entry point for the Application.
+ * ViewModel for the Add/Edit User screen.
  */
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
+interface IAddEditUserViewModel {
+
+    /**
+     * Add User to the Database
+     */
+    fun addUser(user: User)
+
+    /**
+     * Update an existing user in the Database
+     */
+    fun updateUser(user: User)
 }

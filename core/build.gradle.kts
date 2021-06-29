@@ -14,6 +14,12 @@
  * limitations under the License.
  */
 
+import dependencies.Dependencies
+
 plugins {
     id(Plugins.COMMON_ANDROID_LIBRARY)
+}
+
+dependencies {
+    api(Dependencies.TIMBER)
 }

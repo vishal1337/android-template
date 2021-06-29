@@ -16,11 +16,17 @@ object Plugins {
 
     const val GIT_HOOKS = "plugins.git-hooks"
 
+    const val HILT = "dagger.hilt.android.plugin"
+
     const val KOTLIN = "kotlin"
     const val KOTLIN_ANDROID = "android"
-    const val KOTLIN_APT = "apt"
+    const val KOTLIN_APT = "kapt"
+    const val KOTLIN_PARCELIZE = "kotlin-parcelize"
 
     const val KTLINT = "org.jlleitschuh.gradle.ktlint"
+
+    const val NAVIGATION_SAFE_ARGS_KOTLIN = "androidx.navigation.safeargs.kotlin"
+
     const val SPOTLESS = "plugins.spotless"
     const val UPDATE_DEPENDENCIES = "com.github.ben-manes.versions"
 }

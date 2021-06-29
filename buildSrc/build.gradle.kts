@@ -25,18 +25,21 @@ kotlinDslPluginOptions {
 repositories {
     google()
     gradlePluginPortal()
-    jcenter()
     mavenCentral()
 }
 
 object PluginVersions {
-    const val AGP = "4.1.2"
-    const val KOTLIN = "1.4.30"
+    const val AGP = "4.2.0"
+    const val HILT = "2.35.1"
+    const val KOTLIN = "1.5.0"
+    const val NAVIGATION = "2.3.5"
     const val SPOTLESS = "3.26.1"
 }
 
 dependencies {
     implementation("com.android.tools.build:gradle:${PluginVersions.AGP}")
+    implementation("com.google.dagger:hilt-android-gradle-plugin:${PluginVersions.HILT}")
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:${PluginVersions.KOTLIN}")
+    implementation("androidx.navigation:navigation-safe-args-gradle-plugin:${PluginVersions.NAVIGATION}")
     implementation("com.diffplug.spotless:spotless-plugin-gradle:${PluginVersions.SPOTLESS}")
 }

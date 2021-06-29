@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        # Material Design Dimensions
+
+        These dimensions are provided as per Material Design Guidelines
+        to adhere to a 8 dp baseline grid. (With the exception of the
+        toolbar and notification bar.).
+
+        ## References
+
+        - https://www.google.com/design/spec/layout/metrics-keylines.html
+        - https://material.io/guidelines/style/typography.html#typography-typeface
+    -->
+
+    <!-- Card Corner Radius [Start]-->
+    <dimen name="card_corner_radius_size_small">4dp</dimen>
+    <dimen name="card_corner_radius_size_medium">8dp</dimen>
+    <dimen name="card_corner_radius_size_large">12dp</dimen>
+    <dimen name="card_corner_radius_size_xlarge">16dp</dimen>
+    <!-- Card Corner Radius [End]-->
+
+    <!-- Card Elevation [Start]-->
+    <dimen name="card_elevation_default">2dp</dimen>
+    <dimen name="card_elevation_medium">4dp</dimen>
+    <dimen name="card_elevation_high">6dp</dimen>
+    <dimen name="card_elevation_higher">8dp</dimen>
+    <!-- Card Elevation [End]-->
+
+    <!-- Margins & Padding, 8 dp baseline, https://material.io/guidelines/layout/metrics-keylines.html#metrics-keylines-baseline-grids -->
+    <dimen name="margin_padding_size_super_small">4dp</dimen>
+    <dimen name="margin_padding_size_small">8dp</dimen>
+    <dimen name="margin_padding_size_medium">16dp</dimen>
+    <dimen name="margin_padding_size_large">24dp</dimen>
+    <dimen name="margin_padding_size_xlarge">32dp</dimen>
+    <dimen name="margin_padding_size_xxlarge">40dp</dimen>
+    <dimen name="margin_padding_size_xxxlarge">48dp</dimen>
+    <dimen name="margin_padding_size_xxxxlarge">56dp</dimen>
+
+    <!-- Launcher Icon Size, https://developer.android.com/guide/practices/ui_guidelines/icon_design_launcher.html#size -->
+    <dimen name="launcher_icon_size">@dimen/standard_touch_size</dimen>
+
+    <!-- Touch Target Size, https://material.io/guidelines/layout/metrics-keylines.html#metrics-keylines-touch-target-size-->
+    <dimen name="standard_touch_size">48dp</dimen>
+
+    <!-- Toolbar, 4 dp baseline, https://material.io/guidelines/layout/metrics-keylines.html#metrics-keylines-baseline-grids -->
+    <dimen name="toolbar_margin_size">4dp</dimen>
+    <dimen name="toolbar_icon_size">24dp</dimen>
+
+    <!-- Font sizes, https://material.io/guidelines/style/typography.html#typography-typeface -->
+    <dimen name="text_size_micro">12sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_large">20sp</dimen>
+    <dimen name="text_size_xlarge">34sp</dimen>
+    <dimen name="text_size_xxlarge">45sp</dimen>
+    <dimen name="text_size_xxxlarge">56sp</dimen>
+</resources>

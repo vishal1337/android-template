@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Same value as textColorPrimary disabled -->
+    <color name="color_control_light">#39000000</color>
+
+    <color name="color_primary">@color/android_blue</color>
+    <color name="color_primary_dark">@color/android_navy</color>
+    <color name="color_on_secondary">#fff</color>
+
+    <!-- Scrim colors -->
+    <color name="system_ui_scrim_light">#2EFFFFFF</color> <!-- 18% white -->
+    <color name="system_ui_scrim_black">#B3000000</color> <!-- 70% black -->
+
+    <!-- In dark mode without light status bar we can use transparent -->
+    <color name="status_bar_scrim">@color/transparent</color>
+
+</resources>

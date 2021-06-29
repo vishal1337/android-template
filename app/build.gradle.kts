@@ -17,10 +17,15 @@
 import dependencies.Dependencies
 import extensions.addTestsDependencies
 import extensions.implementation
+import extensions.kapt
 
 plugins {
     id(Plugins.ANDROID_APPLICATION)
     kotlin(Plugins.KOTLIN_ANDROID)
+    kotlin(Plugins.KOTLIN_APT)
+    id(Plugins.HILT)
+    id(Plugins.KOTLIN_PARCELIZE)
+    id(Plugins.NAVIGATION_SAFE_ARGS_KOTLIN)
 }
 
 android {
@@ -94,11 +99,24 @@ android {
 
 dependencies {
 
+    // Module Dependencies
+    implementation(project(BuildModules.CORE))
+
+    // Library Dependencies
     implementation(Dependencies.APPCOMPAT)
     implementation(Dependencies.CONSTRAINT_LAYOUT)
     implementation(Dependencies.CORE_KTX)
+    implementation(Dependencies.HILT_ANDROID)
+    kapt(Dependencies.HILT_ANDROID_COMPILER)
+    kapt(Dependencies.HILT_COMPILER)
     implementation(Dependencies.KOTLIN)
+    implementation(Dependencies.LIFECYCLE_VIEWMODEL_KTX)
     implementation(Dependencies.MATERIAL)
+    implementation(Dependencies.NAVIGATION_FRAGMENT_KTX)
+    implementation(Dependencies.NAVIGATION_UI_KTX)
+    implementation(Dependencies.ROOM)
+    kapt(Dependencies.ROOM_COMPILER)
+    implementation(Dependencies.ROOM_KTX)
 
     addTestsDependencies()
 }

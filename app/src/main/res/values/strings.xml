@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">AndroidTemplate</string>
+    <string name="title_users">Users</string>
+    <string name="navigate_up" translation-description="Arrow at the top left of the screen for navigation">Navigate up</string>
+    <string name="button_description_add_new_user">Button to add a new User</string>
+    <string name="btn_title_save">Save</string>
+    <string name="hint_enter_email">Enter Email</string>
+    <string name="hint_enter_name">Enter Name</string>
+    <string name="title_edit">Edit</string>
+    <string name="title_delete">Delete</string>
+    <string name="title_add">Add</string>
+    <string name="no_users_message">Add a new User using the add button at the Bottom.</string>
 </resources>
